@@ -28,7 +28,8 @@
         android:layout_marginStart="50dp"
         android:layout_marginEnd="50dp"
         android:hint="Your Name"
-        android:gravity="center" />
+        android:gravity="center"
+        android:imeOptions="actionDone" />
 
     <Button
         android:id="@+id/buttonPlayGame"
