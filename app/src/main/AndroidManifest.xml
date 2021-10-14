@@ -10,6 +10,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.OSTandfurious">
         <activity
+            android:name=".creditActivity"
+            android:exported="true" />
+        <activity
             android:name=".gameActivity"
             android:exported="true" />
         <activity
