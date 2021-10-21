@@ -19,6 +19,11 @@
             android:exported="true"
             android:screenOrientation="portrait"/>
         <activity
+            android:name=".EndScreenActivity"
+            android:exported="true"
+            android:theme="@style/Theme.PopupTheme"
+            android:screenOrientation="portrait"/>
+        <activity
             android:name=".leaderboardActivity"
             android:exported="true"
             android:screenOrientation="portrait"/>

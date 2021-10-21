@@ -1,22 +1,22 @@
 package ch.ost.rj.mge.ostandfurious;
 
-import static ch.ost.rj.mge.ostandfurious.GameView.drawingCars;
+import static ch.ost.rj.mge.ostandfurious.GameView.isDrawingCars;
+import static ch.ost.rj.mge.ostandfurious.GameView.isGameOver;
 import static ch.ost.rj.mge.ostandfurious.GameView.isPlaying;
+import static ch.ost.rj.mge.ostandfurious.GameView.meters;
 import static ch.ost.rj.mge.ostandfurious.GameView.screenRatioX;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.graphics.Point;
 import android.hardware.Sensor;
 import android.hardware.SensorEvent;
 import android.hardware.SensorEventListener;
 import android.hardware.SensorManager;
 import android.os.Bundle;
-import android.os.CountDownTimer;
-import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import java.util.ConcurrentModificationException;
@@ -25,6 +25,7 @@ import java.util.TimerTask;
 
 public class gameActivity extends AppCompatActivity {
 
+    public static String playerName;
     private GameView gameView;
     private SensorManager sm;
     private Sensor gyroscopeSensor;
@@ -37,6 +38,21 @@ public class gameActivity extends AppCompatActivity {
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
                 WindowManager.LayoutParams.FLAG_FULLSCREEN);
         getSupportActionBar().hide();
+
+        Bundle extras = getIntent().getExtras();
+        if(extras == null) {
+            System.out.println("Extras are null!");
+            Intent mainIntent = new Intent(this, MainActivity.class);
+            startActivity(mainIntent);
+        }
+        else {
+            playerName = extras.getString("playerName");
+            if(playerName == null) {
+                System.out.println("Name is null!");
+                Intent mainIntent = new Intent(this, MainActivity.class);
+                startActivity(mainIntent);
+            }
+        }
 
         sm = (SensorManager) getSystemService(SENSOR_SERVICE);
         gyroscopeSensor = sm.getDefaultSensor(Sensor.TYPE_GYROSCOPE);
@@ -65,14 +81,16 @@ public class gameActivity extends AppCompatActivity {
         Point point = new Point();
         getWindowManager().getDefaultDisplay().getSize(point);
 
-        gameView = new GameView(this, point.x, point.y);
+        isGameOver = false;
+        meters = 0;
+        gameView = new GameView(this, point.x, point.y, playerName);
         setContentView(gameView);
 
-        new Timer().scheduleAtFixedRate(new TimerTask() {
+        /*new Timer().scheduleAtFixedRate(new TimerTask() {
             @Override
             public void run() {
                 //TODO: better ConcurrentModificationException handling
-                if(!drawingCars) {
+                if(!isDrawingCars) {
                     if(isPlaying) {
                         try {
                             gameView.spawnCar();
@@ -82,7 +100,7 @@ public class gameActivity extends AppCompatActivity {
                     }
                 }
             }
-        }, 0, 1000);
+        }, 0, 1000);*/
 
 
         /*TextView countDownView = this.findViewById(R.id.countDownView);
@@ -117,7 +135,18 @@ public class gameActivity extends AppCompatActivity {
     protected void onPause() {
         super.onPause();
         sm.unregisterListener(gyroScopeEventListener);
-        gameView.pause();
+        System.out.println("Paused");
+        /*if(isGameOver) {
+            Intent endScreenActivity = new Intent(
+                    this,
+                    EndScreenActivity.class
+            );
+            endScreenActivity.putExtra("playerName", playerName);
+            endScreenActivity.putExtra("meters", Integer.toString(meters));
+            startActivity(endScreenActivity);
+        }*/
+
+        //gameView.pause();
     }
 
     @Override

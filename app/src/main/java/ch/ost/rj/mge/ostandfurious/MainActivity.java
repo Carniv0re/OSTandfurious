@@ -19,13 +19,13 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        //This is for testing purposes, to get to the game screen faster. Remove later
+        /*//This is for testing purposes, to get to the game screen faster. Remove later
         Intent gameActivityIntent = new Intent(
                 this,
                 gameActivity.class
         );
         startActivity(gameActivityIntent);
-        //Test end
+        //Test end*/
 
         Button playGameBtn = this.findViewById(R.id.buttonPlayGame);
         playGameBtn.setEnabled(false);
@@ -49,29 +49,42 @@ public class MainActivity extends AppCompatActivity {
         });
 
         EditText nameEditText = this.findViewById(R.id.editTextYourName);
-        nameEditText.addTextChangedListener(new TextWatcher() {
-            @Override
-            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-
+        Bundle extras = getIntent().getExtras();
+        if(extras != null) {
+            String playerName = extras.getString("playerName");
+            if(playerName != null) {
+                nameEditText.setText(playerName);
             }
+        }
+        if(nameEditText.getText().equals("")) {
+            nameEditText.addTextChangedListener(new TextWatcher() {
+                @Override
+                public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
 
-            @Override
-            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+                }
 
-            }
+                @Override
+                public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
 
-            @Override
-            public void afterTextChanged(Editable editable) {
-                playGameBtn.setEnabled(true);
-            }
-        });
+                }
 
-        /*playGameBtn.setOnClickListener(v -> {
-            Intent gameActivityIntent = new Intent(
+                @Override
+                public void afterTextChanged(Editable editable) {
+                    playGameBtn.setEnabled(true);
+                }
+            });
+        }
+        else {
+            playGameBtn.setEnabled(true);
+        }
+
+        playGameBtn.setOnClickListener(v -> {
+            Intent tempGameActivityIntent = new Intent(
                     this,
                     gameActivity.class
                     );
-            startActivity(gameActivityIntent);
-        });*/
+            tempGameActivityIntent.putExtra("playerName", nameEditText.getText().toString());
+            startActivity(tempGameActivityIntent);
+        });
     }
 }

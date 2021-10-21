@@ -1,12 +1,12 @@
 package ch.ost.rj.mge.ostandfurious;
 
 import android.content.Context;
+import android.content.Intent;
 import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
 import android.graphics.Rect;
 import android.graphics.Typeface;
-import android.util.Log;
 import android.view.SurfaceView;
 
 import java.util.ArrayList;
@@ -16,24 +16,31 @@ import java.util.concurrent.ThreadLocalRandom;
 public class GameView extends SurfaceView implements Runnable{
 
     private Thread thread;
-    public static boolean isPlaying;
-    private int screenX, screenY;
+    private Context context;
+    public static boolean isPlaying, isGameOver = false;
+    private int screenX, screenY, distanceSinceLastCar;
     public static float screenRatioX, screenRatioY;
-    public static boolean drawingCars = false;
+    public static boolean isDrawingCars = false;
     private double backGroundSpeed;
     private int laps = 0;
     public static int meters = 0;
     private boolean speedIncrease = true;
+    private String playerName;
     private Bike bike;
     private List<Car> cars = new ArrayList<>();
     private Paint paint, textPaint;
     private GameBackground background1, background2;
 
-    public GameView(Context context, int screenX, int screenY) {
+    public GameView(Context context, int screenX, int screenY, String playerName) {
         super(context);
+        this.context = context;
 
         this.screenX = screenX;
         this.screenY = screenY;
+
+        this.playerName = playerName;
+
+        distanceSinceLastCar = 0;
 
         screenRatioX = 1920f / screenX;
         screenRatioY = 1080f / screenY;
@@ -60,7 +67,6 @@ public class GameView extends SurfaceView implements Runnable{
     public void run() {
 
         while(isPlaying) {
-
             update();
             draw();
             sleep();
@@ -68,24 +74,26 @@ public class GameView extends SurfaceView implements Runnable{
     }
 
     private void update() {
+        List<Car> trash = new ArrayList<>();
 
-        /* Horizontal movement
-        background1.x -= 10;// * screenRatioX;
-        background2.x -= 10;// * screenRatioX;
-
-        if(background1.x + background1.background.getWidth() < 0) {
-            background1.x = screenX;
-            System.out.println("1");
+        if(isGameOver) {
+            pause();
         }
-        if(background2.x + background2.background.getWidth() < 0) {
-            background2.x = screenX;
-            System.out.println("2");
-        }*/
         double currentSpeed = 10 * backGroundSpeed;
         background1.y += currentSpeed;
         background2.y += currentSpeed;
         meters += currentSpeed / 10;
-        System.out.println(meters);
+        //System.out.println(meters);
+        if(cars.size() == 0) {
+            Car firstCar = new Car(screenX, screenX / 2, getResources());
+            cars.add(firstCar);
+        }
+        if(distanceSinceLastCar >= bike.height * 5) {
+            spawnCar();
+            distanceSinceLastCar = 0;
+        }
+        distanceSinceLastCar += currentSpeed;
+
 
         if(background1.y > screenY) {
             background1.y = 0 - background1.background.getHeight();
@@ -105,6 +113,13 @@ public class GameView extends SurfaceView implements Runnable{
         }
         for (Car car : cars) {
             car.move((int) currentSpeed);
+            if(car.topLeft.getY() >= screenY) {
+                trash.add(car);
+            }
+        }
+
+        for(Car car : trash) {
+            cars.remove(car);
         }
     }
 
@@ -122,7 +137,7 @@ public class GameView extends SurfaceView implements Runnable{
             canvas.drawCircle(bike.topLeft.getX(), bike.topLeft.getY(), 10, paint);
             canvas.drawCircle(bike.topRight.getX(), bike.topRight.getY(), 10, paint);
 
-            drawingCars = true;
+            isDrawingCars = true;
             for(Car car : cars) {
                 canvas.drawBitmap(car.getCar(), car.topLeft.getX(), car.topLeft.getY(), paint);
 
@@ -132,10 +147,10 @@ public class GameView extends SurfaceView implements Runnable{
                 canvas.drawCircle(car.topRight.getX(), car.topRight.getY(), 5, paint);
 
                 if(car.isCollidingWith(bike)) {
-                    pause();
+                    isGameOver = true;
                 }
             }
-            drawingCars = false;
+            isDrawingCars = false;
 
             Rect textBounds = new Rect();
             textPaint.getTextBounds("y", 0, 1, textBounds);
@@ -159,12 +174,19 @@ public class GameView extends SurfaceView implements Runnable{
 
         thread = new Thread(this);
         thread.start();
-
     }
 
     public void pause() {
         isPlaying = false;
-
+        if(isGameOver) {
+            Intent endScreenActivity = new Intent(
+                    context,
+                    EndScreenActivity.class
+            );
+            endScreenActivity.putExtra("playerName", playerName);
+            endScreenActivity.putExtra("meters", Integer.toString(meters));
+            context.startActivity(endScreenActivity);
+        }
         try {
             thread.join();
         } catch (InterruptedException e) {
@@ -173,7 +195,7 @@ public class GameView extends SurfaceView implements Runnable{
     }
 
     public void moveBike(int amount) {
-        //amount *= screenRatioX;
+        amount *= screenRatioX;
         if(this.bike.bottomLeft.getX() - amount < 0) {
             if(amount > 0) {
                 this.bike.bottomLeft.moveX(amount);
@@ -201,7 +223,9 @@ public class GameView extends SurfaceView implements Runnable{
     public void spawnCar() {
         int possibleCoords[] = {0, (int) (screenX * 0.25), (int) (screenX / 2), (int) (screenX * 0.75)};
         Car newCar = new Car(screenX, possibleCoords[ThreadLocalRandom.current().nextInt(0, 4)], getResources());
-        System.out.println("New car spawned with width: " + newCar.width + " and height: " + newCar.height);
-        cars.add(newCar);
+        //System.out.println("New car spawned with width: " + newCar.width + " and height: " + newCar.height);
+        //if(!isDrawingCars) {
+            cars.add(newCar);
+        //}
     }
 }
