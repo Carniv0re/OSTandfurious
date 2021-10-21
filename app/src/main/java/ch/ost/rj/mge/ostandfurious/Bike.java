@@ -9,7 +9,8 @@ import android.graphics.BitmapFactory;
 
 public class Bike {
 
-    int x, y, width, height;
+    Coord bottomLeft, bottomRight, topLeft, topRight;
+    int width, height;
     Bitmap bike;
 
     Bike(int screenX, int screenY, Resources res) {
@@ -17,15 +18,11 @@ public class Bike {
         if(bike == null) {
             System.out.println("Bike.java/18: Bike is null!");
         }
-        //System.out.println("Bitmap height: "+ bike.getHeight());
         width = bike.getWidth();
         height = bike.getHeight();
-        /*System.out.println("Height initial: " + height);
-        System.out.println("Width initial: " + width);*/
 
         width /= 4;
         height /= 4;
-        //System.out.println("Height after division: " + height);
 
 
         //width *= screenRatioX;
@@ -40,11 +37,21 @@ public class Bike {
             System.out.println("Bike.java/32: Scaled Bike is null!");
         }
 
-        x = screenX / 2 - width / 2;
-        y = (int) (screenY * 0.75);
+        topLeft = new Coord(screenX / 2 - width / 2, (int) (screenY * 0.75));
+        topRight = new Coord(screenX / 2 + width / 2, (int) (screenY * 0.75));
+
+        bottomRight = new Coord(screenX / 2 + width / 2, (int) (screenY * 0.75 + height));
+        bottomLeft = new Coord(screenX / 2 - width / 2, (int) (screenY * 0.75 + height));
     }
 
     Bitmap getBike() {
         return bike;
+    }
+
+    public void moveBike(int amount) {
+        bottomLeft.moveX(amount);
+        bottomRight.moveX(amount);
+        topLeft.moveX(amount);
+        topRight.moveX(amount);
     }
 }

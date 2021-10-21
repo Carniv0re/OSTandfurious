@@ -94,10 +94,7 @@ public class GameView extends SurfaceView implements Runnable{
             speedIncrease = true;
         }
         for (Car car : cars) {
-            car.y += currentSpeed;
-            if(car.y >= bike.y) {
-                pause();
-            }
+            car.move((int) currentSpeed);
         }
     }
 
@@ -108,10 +105,21 @@ public class GameView extends SurfaceView implements Runnable{
             canvas.drawBitmap(background1.background, background1.x, background1.y, paint);
             canvas.drawBitmap(background2.background, background2.x, background2.y, paint);
 
-            canvas.drawBitmap(bike.getBike(), bike.x, bike.y, paint);
+            canvas.drawBitmap(bike.getBike(), bike.topLeft.getX(), bike.topLeft.getY(), paint);
+
+            canvas.drawCircle(bike.bottomLeft.getX(), bike.bottomLeft.getY(), 5, paint);
+            canvas.drawCircle(bike.bottomRight.getX(), bike.bottomRight.getY(), 5, paint);
+            canvas.drawCircle(bike.topLeft.getX(), bike.topLeft.getY(), 10, paint);
+            canvas.drawCircle(bike.topRight.getX(), bike.topRight.getY(), 10, paint);
+
             drawingCars = true;
             for(Car car : cars) {
-                canvas.drawBitmap(car.getCar(), car.x, car.y, paint);
+                canvas.drawBitmap(car.getCar(), car.topLeft.getX(), car.topLeft.getY(), paint);
+
+                canvas.drawCircle(car.bottomLeft.getX(), car.bottomLeft.getY(), 10, paint);
+                canvas.drawCircle(car.bottomRight.getX(), car.bottomRight.getY(), 10, paint);
+                canvas.drawCircle(car.topLeft.getX(), car.topLeft.getY(), 5, paint);
+                canvas.drawCircle(car.topRight.getX(), car.topRight.getY(), 5, paint);
             }
             drawingCars = false;
             getHolder().unlockCanvasAndPost(canvas);
@@ -144,23 +152,30 @@ public class GameView extends SurfaceView implements Runnable{
         }
     }
 
-    public void moveBike(float amount) {
-        /*if(this.bike.x - amount >= 0 && this.bike.x + amount <= screenX - this.bike.width) {
-            this.bike.x += amount;
-        }*/
-        amount *= screenRatioX;
-        //System.out.println(amount);
-        if(this.bike.x - amount < 0) {
+    public void moveBike(int amount) {
+        //amount *= screenRatioX;
+        if(this.bike.bottomLeft.getX() - amount < 0) {
             if(amount > 0) {
-                this.bike.x += amount;
+                this.bike.bottomLeft.moveX(amount);
+                this.bike.bottomRight.moveX(amount);
+                this.bike.topLeft.moveX(amount);
+                this.bike.topRight.moveX(amount);
             }
         }
-        else if(this.bike.x + amount > screenX - this.bike.width) {
+        else if(this.bike.bottomRight.getX() + amount > screenX) {
             if(amount < 0) {
-                this.bike.x += amount;
+                this.bike.bottomLeft.moveX(amount);
+                this.bike.bottomRight.moveX(amount);
+                this.bike.topLeft.moveX(amount);
+                this.bike.topRight.moveX(amount);
             }
         }
-        else {this.bike.x += amount;}
+        else {
+            this.bike.bottomLeft.moveX(amount);
+            this.bike.bottomRight.moveX(amount);
+            this.bike.topLeft.moveX(amount);
+            this.bike.topRight.moveX(amount);
+        }
     }
 
     public void spawnCar() {

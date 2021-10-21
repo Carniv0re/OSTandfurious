@@ -2,6 +2,7 @@ package ch.ost.rj.mge.ostandfurious;
 
 import static ch.ost.rj.mge.ostandfurious.GameView.drawingCars;
 import static ch.ost.rj.mge.ostandfurious.GameView.isPlaying;
+import static ch.ost.rj.mge.ostandfurious.GameView.screenRatioX;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -44,10 +45,10 @@ public class gameActivity extends AppCompatActivity {
             @Override
             public void onSensorChanged(SensorEvent sensorEvent) {
                 if(sensorEvent.values[1] > 0.2f) {
-                    gameView.moveBike(sensorEvent.values[1]);
+                    gameView.moveBike((int)(sensorEvent.values[1] * screenRatioX));
                 }
                 else if(sensorEvent.values[1] < -0.2f) {
-                    gameView.moveBike(sensorEvent.values[1]);
+                    gameView.moveBike((int)(sensorEvent.values[1] * screenRatioX));
                 }
             }
 
