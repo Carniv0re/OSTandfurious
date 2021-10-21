@@ -19,6 +19,14 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        //This is for testing purposes, to get to the game screen faster. Remove later
+        Intent gameActivityIntent = new Intent(
+                this,
+                gameActivity.class
+        );
+        startActivity(gameActivityIntent);
+        //Test end
+
         Button playGameBtn = this.findViewById(R.id.buttonPlayGame);
         playGameBtn.setEnabled(false);
 
@@ -58,12 +66,12 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        playGameBtn.setOnClickListener(v -> {
+        /*playGameBtn.setOnClickListener(v -> {
             Intent gameActivityIntent = new Intent(
                     this,
                     gameActivity.class
                     );
             startActivity(gameActivityIntent);
-        });
+        });*/
     }
 }
