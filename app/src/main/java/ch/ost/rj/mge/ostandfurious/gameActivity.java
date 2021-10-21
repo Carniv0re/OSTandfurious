@@ -14,10 +14,12 @@ import android.hardware.SensorManager;
 import android.os.Bundle;
 import android.os.CountDownTimer;
 import android.view.View;
+import android.view.Window;
 import android.view.WindowManager;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import java.util.ConcurrentModificationException;
 import java.util.Timer;
 import java.util.TimerTask;
 
@@ -31,8 +33,10 @@ public class gameActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        requestWindowFeature(Window.FEATURE_NO_TITLE);
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
                 WindowManager.LayoutParams.FLAG_FULLSCREEN);
+        getSupportActionBar().hide();
 
         sm = (SensorManager) getSystemService(SENSOR_SERVICE);
         gyroscopeSensor = sm.getDefaultSensor(Sensor.TYPE_GYROSCOPE);
@@ -67,13 +71,19 @@ public class gameActivity extends AppCompatActivity {
         new Timer().scheduleAtFixedRate(new TimerTask() {
             @Override
             public void run() {
+                //TODO: better ConcurrentModificationException handling
                 if(!drawingCars) {
                     if(isPlaying) {
-                        gameView.spawnCar();
+                        try {
+                            gameView.spawnCar();
+                        } catch (ConcurrentModificationException e) {
+                            e.printStackTrace();
+                        }
                     }
                 }
             }
         }, 0, 1000);
+
 
         /*TextView countDownView = this.findViewById(R.id.countDownView);
         countDownView.setText("Ready?");

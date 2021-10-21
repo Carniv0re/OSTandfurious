@@ -16,8 +16,8 @@ public class Car {
         width = car.getWidth();
         height = car.getHeight();
 
-        width /= 4;
-        height /= 4;
+        width /= 2;
+        height /= 2;
         //width = (int) (width * screenRatioX);
         //height = (int) (height * screenRatioY);
 
@@ -38,5 +38,18 @@ public class Car {
         bottomRight.moveY(amount);
         topLeft.moveY(amount);
         topRight.moveY(amount);
+    }
+
+    private boolean inMiddleOf(Coord toCheck) {
+        return toCheck.getX() >= bottomLeft.getX() && toCheck.getX() <= bottomRight.getX()
+                && toCheck.getY() <= bottomLeft.getY() && toCheck.getY() >= topLeft.getY();
+    }
+
+    public boolean isCollidingWith(Bike bike) {
+        if(inMiddleOf(bike.bottomLeft) || inMiddleOf(bike.bottomRight)
+        || inMiddleOf(bike.topLeft) || inMiddleOf(bike.topRight)) {
+            return true;
+        }
+        return false;
     }
 }

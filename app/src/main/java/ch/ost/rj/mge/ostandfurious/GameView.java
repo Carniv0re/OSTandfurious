@@ -2,7 +2,10 @@ package ch.ost.rj.mge.ostandfurious;
 
 import android.content.Context;
 import android.graphics.Canvas;
+import android.graphics.Color;
 import android.graphics.Paint;
+import android.graphics.Rect;
+import android.graphics.Typeface;
 import android.util.Log;
 import android.view.SurfaceView;
 
@@ -19,10 +22,11 @@ public class GameView extends SurfaceView implements Runnable{
     public static boolean drawingCars = false;
     private double backGroundSpeed;
     private int laps = 0;
+    public static int meters = 0;
     private boolean speedIncrease = true;
     private Bike bike;
     private List<Car> cars = new ArrayList<>();
-    private Paint paint;
+    private Paint paint, textPaint;
     private GameBackground background1, background2;
 
     public GameView(Context context, int screenX, int screenY) {
@@ -35,6 +39,10 @@ public class GameView extends SurfaceView implements Runnable{
         screenRatioY = 1080f / screenY;
 
         paint = new Paint();
+        textPaint = new Paint();
+        textPaint.setColor(Color.WHITE);
+        textPaint.setTextSize(200);
+        textPaint.setTypeface(Typeface.create(Typeface.DEFAULT, Typeface.BOLD));
 
         background1 = new GameBackground(screenX, screenY, getResources());
         background2 = new GameBackground(screenX, screenY, getResources());
@@ -76,6 +84,8 @@ public class GameView extends SurfaceView implements Runnable{
         double currentSpeed = 10 * backGroundSpeed;
         background1.y += currentSpeed;
         background2.y += currentSpeed;
+        meters += currentSpeed / 10;
+        System.out.println(meters);
 
         if(background1.y > screenY) {
             background1.y = 0 - background1.background.getHeight();
@@ -120,8 +130,18 @@ public class GameView extends SurfaceView implements Runnable{
                 canvas.drawCircle(car.bottomRight.getX(), car.bottomRight.getY(), 10, paint);
                 canvas.drawCircle(car.topLeft.getX(), car.topLeft.getY(), 5, paint);
                 canvas.drawCircle(car.topRight.getX(), car.topRight.getY(), 5, paint);
+
+                if(car.isCollidingWith(bike)) {
+                    pause();
+                }
             }
             drawingCars = false;
+
+            Rect textBounds = new Rect();
+            textPaint.getTextBounds("y", 0, 1, textBounds);
+            int metersY = textBounds.height();
+            canvas.drawText(Integer.toString(meters), 0, metersY, textPaint);
+
             getHolder().unlockCanvasAndPost(canvas);
         }
     }
