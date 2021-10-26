@@ -1,4 +1,4 @@
-package ch.ost.rj.mge.ostandfurious;
+package ch.ost.rj.mge.ostandfurious.activities;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -8,7 +8,8 @@ import android.widget.TextView;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.fragment.app.FragmentActivity;
+
+import ch.ost.rj.mge.ostandfurious.R;
 
 public class EndScreenActivity extends AppCompatActivity {
 
@@ -68,7 +69,7 @@ public class EndScreenActivity extends AppCompatActivity {
         playAgainButton.setOnClickListener(v -> {
             Intent gameActivity = new Intent(
                     this,
-                    gameActivity.class
+                    ch.ost.rj.mge.ostandfurious.activities.gameActivity.class
             );
             gameActivity.putExtra("playerName", playerName);
             gameActivity.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);

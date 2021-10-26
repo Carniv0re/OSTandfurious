@@ -1,11 +1,10 @@
-package ch.ost.rj.mge.ostandfurious;
-
-import static ch.ost.rj.mge.ostandfurious.GameView.screenRatioX;
-import static ch.ost.rj.mge.ostandfurious.GameView.screenRatioY;
+package ch.ost.rj.mge.ostandfurious.objects;
 
 import android.content.res.Resources;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+
+import ch.ost.rj.mge.ostandfurious.R;
 
 public class Bike {
 
@@ -13,7 +12,7 @@ public class Bike {
     int width, height;
     Bitmap bike;
 
-    Bike(int screenX, int screenY, Resources res) {
+    public Bike(int screenX, int screenY, Resources res) {
         bike = BitmapFactory.decodeResource(res, R.drawable.bike);
         if(bike == null) {
             System.out.println("Bike.java/18: Bike is null!");
@@ -44,11 +43,31 @@ public class Bike {
         bottomLeft = new Coord(screenX / 2 - width / 2, (int) (screenY * 0.75 + height));
     }
 
-    Bitmap getBike() {
+    public Bitmap getBike() {
         return bike;
     }
 
-    public void moveBike(int amount) {
+    public int getHeight() {
+        return height;
+    }
+
+    public Coord getBottomLeft() {
+        return bottomLeft;
+    }
+
+    public Coord getBottomRight() {
+        return bottomRight;
+    }
+
+    public Coord getTopLeft() {
+        return topLeft;
+    }
+
+    public Coord getTopRight() {
+        return topRight;
+    }
+
+    public void move(int amount) {
         bottomLeft.moveX(amount);
         bottomRight.moveX(amount);
         topLeft.moveX(amount);

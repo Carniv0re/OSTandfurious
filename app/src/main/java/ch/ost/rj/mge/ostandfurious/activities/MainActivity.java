@@ -1,16 +1,15 @@
-package ch.ost.rj.mge.ostandfurious;
+package ch.ost.rj.mge.ostandfurious.activities;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
-import android.view.View;
-import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 import android.widget.EditText;
+
+import ch.ost.rj.mge.ostandfurious.R;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -85,6 +84,12 @@ public class MainActivity extends AppCompatActivity {
                     );
             tempGameActivityIntent.putExtra("playerName", nameEditText.getText().toString());
             startActivity(tempGameActivityIntent);
+        });
+
+        Button localeButton = (Button) findViewById(R.id.buttonLanguage);
+        localeButton.setOnClickListener(v -> {
+            localeButton.setText("DE");
+
         });
     }
 }

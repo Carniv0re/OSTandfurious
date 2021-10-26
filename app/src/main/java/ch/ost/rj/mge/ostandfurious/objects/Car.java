@@ -1,8 +1,10 @@
-package ch.ost.rj.mge.ostandfurious;
+package ch.ost.rj.mge.ostandfurious.objects;
 
 import android.content.res.Resources;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+
+import ch.ost.rj.mge.ostandfurious.R;
 
 public class Car {
 
@@ -10,7 +12,7 @@ public class Car {
     int x = 0, y, width, height;
     Bitmap car;
 
-    Car(int screenX, int xCoord, Resources res) {
+    public Car(int screenX, int xCoord, Resources res) {
         car = BitmapFactory.decodeResource(res, R.drawable.car);
 
         width = car.getWidth();
@@ -29,8 +31,12 @@ public class Car {
         topRight = new Coord(xCoord + width, -height);
     }
 
-    Bitmap getCar() {
+    public Bitmap getCar() {
         return car;
+    }
+
+    public Coord getTopLeft() {
+        return topLeft;
     }
 
     public void move(int amount) {

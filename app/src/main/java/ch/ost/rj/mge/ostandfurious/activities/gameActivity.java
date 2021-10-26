@@ -1,10 +1,8 @@
-package ch.ost.rj.mge.ostandfurious;
+package ch.ost.rj.mge.ostandfurious.activities;
 
-import static ch.ost.rj.mge.ostandfurious.GameView.isDrawingCars;
-import static ch.ost.rj.mge.ostandfurious.GameView.isGameOver;
-import static ch.ost.rj.mge.ostandfurious.GameView.isPlaying;
-import static ch.ost.rj.mge.ostandfurious.GameView.meters;
-import static ch.ost.rj.mge.ostandfurious.GameView.screenRatioX;
+import static ch.ost.rj.mge.ostandfurious.views.GameView.isGameOver;
+import static ch.ost.rj.mge.ostandfurious.views.GameView.meters;
+import static ch.ost.rj.mge.ostandfurious.views.GameView.screenRatioX;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -19,9 +17,7 @@ import android.view.Window;
 import android.view.WindowManager;
 import android.widget.Toast;
 
-import java.util.ConcurrentModificationException;
-import java.util.Timer;
-import java.util.TimerTask;
+import ch.ost.rj.mge.ostandfurious.views.GameView;
 
 public class gameActivity extends AppCompatActivity {
 
