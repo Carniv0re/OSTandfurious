@@ -65,6 +65,15 @@ public class EndScreenActivity extends AppCompatActivity {
             mainMenuActivity.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
             startActivity(mainMenuActivity);
         });
+        playAgainButton.setOnClickListener(v -> {
+            Intent gameActivity = new Intent(
+                    this,
+                    gameActivity.class
+            );
+            gameActivity.putExtra("playerName", playerName);
+            gameActivity.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+            startActivity(gameActivity);
+        });
 
     }
 }
