@@ -57,7 +57,7 @@ public class MainActivity extends AppCompatActivity {
                 nameEditText.setText(playerName);
             }
         }
-        if (nameEditText.getText().equals("")) {
+        if (nameEditText.getText().toString().equals("")) {
             nameEditText.addTextChangedListener(new TextWatcher() {
                 @Override
                 public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
