@@ -1,4 +1,4 @@
-package ch.ost.rj.mge.ostandfurious.Adapter;
+package ch.ost.rj.mge.ostandfurious.adapter;
 
 import android.content.Context;
 import android.view.LayoutInflater;

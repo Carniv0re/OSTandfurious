@@ -12,7 +12,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import java.util.Collections;
 import java.util.List;
 
-import ch.ost.rj.mge.ostandfurious.Adapter.PlayerAdapter;
+import ch.ost.rj.mge.ostandfurious.adapter.PlayerAdapter;
 import ch.ost.rj.mge.ostandfurious.R;
 import ch.ost.rj.mge.ostandfurious.model.Player;
 import ch.ost.rj.mge.ostandfurious.model.PlayerRepository;
