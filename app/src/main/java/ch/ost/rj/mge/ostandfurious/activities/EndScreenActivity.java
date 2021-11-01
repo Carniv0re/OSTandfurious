@@ -71,7 +71,7 @@ public class EndScreenActivity extends AppCompatActivity {
         playAgainButton.setOnClickListener(v -> {
             Intent gameActivity = new Intent(
                     this,
-                    ch.ost.rj.mge.ostandfurious.activities.gameActivity.class
+                    GameActivity.class
             );
             gameActivity.putExtra("playerName", playerName);
             gameActivity.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);

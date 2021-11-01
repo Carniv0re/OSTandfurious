@@ -17,7 +17,7 @@ import ch.ost.rj.mge.ostandfurious.R;
 import ch.ost.rj.mge.ostandfurious.model.Player;
 import ch.ost.rj.mge.ostandfurious.model.PlayerRepository;
 
-public class leaderboardActivity extends AppCompatActivity {
+public class LeaderboardActivity extends AppCompatActivity {
 
     private PlayerAdapter adapter;
 

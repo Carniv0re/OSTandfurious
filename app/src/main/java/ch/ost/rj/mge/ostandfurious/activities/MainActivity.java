@@ -35,7 +35,7 @@ public class MainActivity extends AppCompatActivity {
         leaderboardBtn.setOnClickListener(v -> {
             Intent leaderboardActivityIntent = new Intent(
                     this,
-                    leaderboardActivity.class
+                    LeaderboardActivity.class
             );
             startActivity(leaderboardActivityIntent);
         });
@@ -44,7 +44,7 @@ public class MainActivity extends AppCompatActivity {
         creditsBtn.setOnClickListener(v -> {
             Intent creditsActivityIntent = new Intent(
                     this,
-                    creditActivity.class
+                    CreditActivity.class
             );
             startActivity(creditsActivityIntent);
         });
@@ -81,7 +81,7 @@ public class MainActivity extends AppCompatActivity {
         playGameBtn.setOnClickListener(v -> {
             Intent tempGameActivityIntent = new Intent(
                     this,
-                    gameActivity.class
+                    GameActivity.class
             );
             tempGameActivityIntent.putExtra("playerName", nameEditText.getText().toString());
             startActivity(tempGameActivityIntent);

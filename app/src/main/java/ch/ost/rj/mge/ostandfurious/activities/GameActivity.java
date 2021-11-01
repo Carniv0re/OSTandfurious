@@ -19,7 +19,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import ch.ost.rj.mge.ostandfurious.views.GameView;
 
-public class gameActivity extends AppCompatActivity {
+public class GameActivity extends AppCompatActivity {
 
     public static String playerName;
     private GameView gameView;

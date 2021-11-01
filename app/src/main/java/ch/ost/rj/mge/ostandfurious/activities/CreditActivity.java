@@ -8,7 +8,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import ch.ost.rj.mge.ostandfurious.R;
 
-public class creditActivity extends AppCompatActivity {
+public class CreditActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
