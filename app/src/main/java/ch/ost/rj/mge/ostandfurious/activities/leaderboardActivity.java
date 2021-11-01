@@ -9,9 +9,13 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.widget.Button;
 
+import java.util.Collections;
+import java.util.Comparator;
+import java.util.List;
+
 import ch.ost.rj.mge.ostandfurious.Adapter.PlayerAdapter;
 import ch.ost.rj.mge.ostandfurious.R;
-import ch.ost.rj.mge.ostandfurious.activities.MainActivity;
+import ch.ost.rj.mge.ostandfurious.model.Player;
 import ch.ost.rj.mge.ostandfurious.model.PlayerRepository;
 
 public class leaderboardActivity extends AppCompatActivity {
@@ -45,6 +49,8 @@ public class leaderboardActivity extends AppCompatActivity {
     @Override
     protected void onResume() {
         super.onResume();
-        adapter.updatePlayers(PlayerRepository.getPlayers());
+        List<Player> players = PlayerRepository.getPlayers();
+        Collections.sort(players, (lhs, rhs) -> Integer.compare(rhs.score, lhs.score));
+        adapter.updatePlayers(players);
     }
 }
