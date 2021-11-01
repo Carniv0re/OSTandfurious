@@ -40,13 +40,16 @@ public final class PlayerRepository {
         try {
             player.score = Integer.parseInt(score);
             System.out.println(player.score);
-        } catch (RuntimeException ex) {
-            System.out.println("Could not convert score to int!");
+        } catch (NumberFormatException ex) {
+            System.out.println("Could not convert score to an int!");
+            player.score = -1;
         }
 
         for (Player p : getPlayers()) {
             if (p.playerName.equals(player.playerName)) {
-                database.playerDao().update(player);
+                if(player.score > p.score) {
+                    database.playerDao().update(player);
+                }
                 return;
             }
         }
