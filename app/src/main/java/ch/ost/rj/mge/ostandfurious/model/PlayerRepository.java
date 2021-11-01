@@ -33,7 +33,7 @@ public final class PlayerRepository {
         database.playerDao().insert(player);
     }
 
-    public static void addPlayer(String playerName, String score) {
+    public static boolean addPlayer(String playerName, String score) {
         Player player = new Player();
         player.playerName = playerName;
 
@@ -47,13 +47,15 @@ public final class PlayerRepository {
 
         for (Player p : getPlayers()) {
             if (p.playerName.equals(player.playerName)) {
-                if(player.score > p.score) {
+                if (player.score > p.score) {
                     database.playerDao().update(player);
+                    return true;
                 }
-                return;
+                return false;
             }
         }
 
         addPlayer(player);
+        return false;
     }
 }

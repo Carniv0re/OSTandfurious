@@ -1,10 +1,12 @@
 package ch.ost.rj.mge.ostandfurious.activities;
 
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.DisplayMetrics;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
@@ -49,7 +51,13 @@ public class EndScreenActivity extends AppCompatActivity {
             }
         }
 
-        PlayerRepository.addPlayer(playerName, meters);
+        if (PlayerRepository.addPlayer(playerName, meters)) {
+            Context context = this;
+            String text = "You cracked your Highscore!";
+            int duration = Toast.LENGTH_SHORT;
+            Toast toast = Toast.makeText(context, text, duration);
+            toast.show();
+        }
 
         TextView playerNameTextView = (TextView) findViewById(R.id.playerNameTextView);
         playerNameTextView.setText(playerName);
