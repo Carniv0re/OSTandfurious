@@ -1,6 +1,4 @@
 # OSTandfurious
-In this game, you have to steer clear of other cars and get as far as possible. Can you get the record?
-
 Ostandfurious ist ein Mobile Game für das Modul Mobile and GUI Engineering (MGE).
 Versuche den entgegenkommenden Fahrzeugen auszuweichen und fahre so weit wie möglich um den Rekord zu schlagen!
 
