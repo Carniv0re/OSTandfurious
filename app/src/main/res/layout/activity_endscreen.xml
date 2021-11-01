@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
@@ -17,7 +16,7 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        android:layout_marginTop="100dp"/>
+        android:layout_marginTop="100dp" />
 
     <TextView
         android:id="@+id/nameTextView"
@@ -32,8 +31,7 @@
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toBottomOf="@id/youDiedTextView"
-        app:layout_constraintBottom_toTopOf="@id/distanceTextView"
-        />
+        app:layout_constraintBottom_toTopOf="@id/distanceTextView" />
 
     <TextView
         android:id="@+id/playerNameTextView"
@@ -46,8 +44,7 @@
         app:layout_constraintTop_toBottomOf="@id/youDiedTextView"
         android:layout_marginTop="75dp"
         app:layout_constraintLeft_toRightOf="@id/nameTextView"
-        app:layout_constraintBottom_toTopOf="@id/distanceTextView"
-        />
+        app:layout_constraintBottom_toTopOf="@id/distanceTextView" />
 
     <TextView
         android:id="@+id/distanceTextView"
@@ -61,8 +58,7 @@
         app:layout_constraintTop_toBottomOf="@id/playerNameTextView"
         app:layout_constraintBottom_toTopOf="@id/playAgainButton"
         app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        />
+        app:layout_constraintRight_toRightOf="parent" />
 
     <TextView
         android:id="@+id/metersTextView"
@@ -75,7 +71,7 @@
         app:layout_constraintLeft_toRightOf="@id/distanceTextView"
         app:layout_constraintTop_toBottomOf="@id/playerNameTextView"
         app:layout_constraintBottom_toTopOf="@id/playAgainButton"
-        app:layout_constraintHorizontal_chainStyle="packed"/>
+        app:layout_constraintHorizontal_chainStyle="packed" />
 
     <Button
         android:id="@+id/playAgainButton"

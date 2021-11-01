@@ -1,10 +1,10 @@
 package ch.ost.rj.mge.ostandfurious.activities;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Intent;
 import android.os.Bundle;
 import android.widget.Button;
+
+import androidx.appcompat.app.AppCompatActivity;
 
 import ch.ost.rj.mge.ostandfurious.R;
 

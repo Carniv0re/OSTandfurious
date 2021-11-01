@@ -13,6 +13,7 @@
         <item name="android:statusBarColor" tools:targetApi="l">?attr/colorPrimaryVariant</item>
         <!-- Customize your theme here. -->
     </style>
+
     <style name="Theme.PopupTheme" parent="Theme.AppCompat">
         <item name="android:windowIsTranslucent">true</item>
     </style>

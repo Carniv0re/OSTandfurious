@@ -1,6 +1,6 @@
 package ch.ost.rj.mge.ostandfurious.objects;
 
-public class Coord implements Comparable<Coord>{
+public class Coord implements Comparable<Coord> {
     private int x, y;
 
     public Coord(int x, int y) {

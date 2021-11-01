@@ -16,9 +16,8 @@ import java.util.concurrent.ThreadLocalRandom;
 import ch.ost.rj.mge.ostandfurious.activities.EndScreenActivity;
 import ch.ost.rj.mge.ostandfurious.objects.Bike;
 import ch.ost.rj.mge.ostandfurious.objects.Car;
-import ch.ost.rj.mge.ostandfurious.views.GameBackground;
 
-public class GameView extends SurfaceView implements Runnable{
+public class GameView extends SurfaceView implements Runnable {
 
     private Thread thread;
     private Context context;
@@ -70,7 +69,7 @@ public class GameView extends SurfaceView implements Runnable{
     @Override
     public void run() {
 
-        while(isPlaying) {
+        while (isPlaying) {
             update();
             draw();
             sleep();
@@ -80,55 +79,54 @@ public class GameView extends SurfaceView implements Runnable{
     private void update() {
         List<Car> trash = new ArrayList<>();
 
-        if(isGameOver) {
+        if (isGameOver) {
             pause();
         }
         double currentSpeed = 10 * backGroundSpeed;
-        background1.move((int)currentSpeed);
-        background2.move((int)currentSpeed);
+        background1.move((int) currentSpeed);
+        background2.move((int) currentSpeed);
         meters += currentSpeed / 10;
-        if(cars.size() == 0) {
+        if (cars.size() == 0) {
             Car firstCar = new Car(screenX, screenX / 2, getResources());
             cars.add(firstCar);
         }
-        if(distanceSinceLastCar >= bike.getHeight() * 5) {
+        if (distanceSinceLastCar >= bike.getHeight() * 5) {
             spawnCar();
             distanceSinceLastCar = 0;
         }
         distanceSinceLastCar += currentSpeed;
 
 
-        if(background1.getY() > screenY) {
+        if (background1.getY() > screenY) {
             background1.setY(0 - background1.getBackground().getHeight());
             laps++;
         }
-        if(background2.getY() > screenY) {
+        if (background2.getY() > screenY) {
             background2.setY(0 - background1.getBackground().getHeight());
             laps++;
         }
-        if(laps % 2 == 0 && laps > 0 && speedIncrease) {
+        if (laps % 2 == 0 && laps > 0 && speedIncrease) {
             this.backGroundSpeed += 0.1;
             speedIncrease = false;
             System.out.println("Speed: " + this.backGroundSpeed);
-        }
-        else if(laps % 2 == 1){
+        } else if (laps % 2 == 1) {
             speedIncrease = true;
         }
         for (Car car : cars) {
             car.move((int) currentSpeed);
-            if(car.getTopLeft().getY() >= screenY) {
+            if (car.getTopLeft().getY() >= screenY) {
                 trash.add(car);
             }
         }
 
-        for(Car car : trash) {
+        for (Car car : trash) {
             cars.remove(car);
         }
     }
 
     private void draw() {
 
-        if(getHolder().getSurface().isValid()) {
+        if (getHolder().getSurface().isValid()) {
             Canvas canvas = getHolder().lockCanvas();
             canvas.drawBitmap(background1.getBackground(), 0, background1.getY(), paint);
             canvas.drawBitmap(background2.getBackground(), 0, background2.getY(), paint);
@@ -141,7 +139,7 @@ public class GameView extends SurfaceView implements Runnable{
             canvas.drawCircle(bike.topRight.getX(), bike.topRight.getY(), 10, paint);*/
 
             isDrawingCars = true;
-            for(Car car : cars) {
+            for (Car car : cars) {
                 canvas.drawBitmap(car.getCar(), car.getTopLeft().getX(), car.getTopLeft().getY(), paint);
 
                 /*canvas.drawCircle(car.bottomLeft.getX(), car.bottomLeft.getY(), 10, paint);
@@ -149,7 +147,7 @@ public class GameView extends SurfaceView implements Runnable{
                 canvas.drawCircle(car.topLeft.getX(), car.topLeft.getY(), 5, paint);
                 canvas.drawCircle(car.topRight.getX(), car.topRight.getY(), 5, paint);*/
 
-                if(car.isCollidingWith(bike)) {
+                if (car.isCollidingWith(bike)) {
                     isGameOver = true;
                 }
             }
@@ -181,7 +179,7 @@ public class GameView extends SurfaceView implements Runnable{
 
     public void pause() {
         isPlaying = false;
-        if(isGameOver) {
+        if (isGameOver) {
             Intent endScreenActivity = new Intent(
                     context,
                     EndScreenActivity.class
@@ -199,25 +197,23 @@ public class GameView extends SurfaceView implements Runnable{
 
     public void moveBike(int amount) {
         amount *= screenRatioX;
-        if(this.bike.getBottomLeft().getX() - amount < 0) {
-            if(amount > 0) {
+        if (this.bike.getBottomLeft().getX() - amount < 0) {
+            if (amount > 0) {
                 this.bike.move(amount);
                 /*this.bike.getBottomLeft().moveX(amount);
                 this.bike.getBottomRight().moveX(amount);
                 this.bike.getTopLeft().moveX(amount);
                 this.bike.getTopRight().moveX(amount);*/
             }
-        }
-        else if(this.bike.getBottomRight().getX() + amount > screenX) {
-            if(amount < 0) {
+        } else if (this.bike.getBottomRight().getX() + amount > screenX) {
+            if (amount < 0) {
                 this.bike.move(amount);
                 /*this.bike.getBottomLeft().moveX(amount);
                 this.bike.getBottomRight().moveX(amount);
                 this.bike.getTopLeft().moveX(amount);
                 this.bike.getTopRight().moveX(amount);*/
             }
-        }
-        else {
+        } else {
             this.bike.move(amount);
             /*this.bike.getBottomLeft().moveX(amount);
             this.bike.getBottomRight().moveX(amount);
@@ -231,7 +227,7 @@ public class GameView extends SurfaceView implements Runnable{
         Car newCar = new Car(screenX, possibleCoords[ThreadLocalRandom.current().nextInt(0, 4)], getResources());
         //System.out.println("New car spawned with width: " + newCar.width + " and height: " + newCar.height);
         //if(!isDrawingCars) {
-            cars.add(newCar);
+        cars.add(newCar);
         //}
     }
 }

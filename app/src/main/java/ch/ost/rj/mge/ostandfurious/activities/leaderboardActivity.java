@@ -1,16 +1,15 @@
 package ch.ost.rj.mge.ostandfurious.activities;
 
+import android.content.Intent;
+import android.os.Bundle;
+import android.widget.Button;
+
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.DividerItemDecoration;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import android.content.Intent;
-import android.os.Bundle;
-import android.widget.Button;
-
 import java.util.Collections;
-import java.util.Comparator;
 import java.util.List;
 
 import ch.ost.rj.mge.ostandfurious.Adapter.PlayerAdapter;

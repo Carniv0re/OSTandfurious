@@ -1,13 +1,13 @@
 package ch.ost.rj.mge.ostandfurious.activities;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.widget.Button;
 import android.widget.EditText;
+
+import androidx.appcompat.app.AppCompatActivity;
 
 import ch.ost.rj.mge.ostandfurious.R;
 import ch.ost.rj.mge.ostandfurious.model.PlayerRepository;
@@ -33,7 +33,7 @@ public class MainActivity extends AppCompatActivity {
 
         Button leaderboardBtn = this.findViewById(R.id.buttonLeaderboard);
         leaderboardBtn.setOnClickListener(v -> {
-            Intent leaderboardActivityIntent = new Intent (
+            Intent leaderboardActivityIntent = new Intent(
                     this,
                     leaderboardActivity.class
             );
@@ -51,13 +51,13 @@ public class MainActivity extends AppCompatActivity {
 
         EditText nameEditText = this.findViewById(R.id.editTextYourName);
         Bundle extras = getIntent().getExtras();
-        if(extras != null) {
+        if (extras != null) {
             String playerName = extras.getString("playerName");
-            if(playerName != null) {
+            if (playerName != null) {
                 nameEditText.setText(playerName);
             }
         }
-        if(nameEditText.getText().equals("")) {
+        if (nameEditText.getText().equals("")) {
             nameEditText.addTextChangedListener(new TextWatcher() {
                 @Override
                 public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
@@ -74,8 +74,7 @@ public class MainActivity extends AppCompatActivity {
                     playGameBtn.setEnabled(true);
                 }
             });
-        }
-        else {
+        } else {
             playGameBtn.setEnabled(true);
         }
 
@@ -83,7 +82,7 @@ public class MainActivity extends AppCompatActivity {
             Intent tempGameActivityIntent = new Intent(
                     this,
                     gameActivity.class
-                    );
+            );
             tempGameActivityIntent.putExtra("playerName", nameEditText.getText().toString());
             startActivity(tempGameActivityIntent);
         });

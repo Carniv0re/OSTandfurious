@@ -7,7 +7,8 @@ import androidx.room.PrimaryKey;
 
 @Entity(tableName = "ranking")
 public final class Player {
-    @PrimaryKey @NonNull
+    @PrimaryKey
+    @NonNull
     public String playerName;
 
     @ColumnInfo

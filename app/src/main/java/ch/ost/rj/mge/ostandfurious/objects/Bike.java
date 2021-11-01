@@ -14,7 +14,7 @@ public class Bike {
 
     public Bike(int screenX, int screenY, Resources res) {
         bike = BitmapFactory.decodeResource(res, R.drawable.bike);
-        if(bike == null) {
+        if (bike == null) {
             System.out.println("Bike.java/18: Bike is null!");
         }
         width = bike.getWidth();
@@ -32,7 +32,7 @@ public class Bike {
 
         bike = Bitmap.createScaledBitmap(bike, width, height, false);
 
-        if(bike == null) {
+        if (bike == null) {
             System.out.println("Bike.java/32: Scaled Bike is null!");
         }
 

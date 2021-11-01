@@ -4,8 +4,6 @@ import static ch.ost.rj.mge.ostandfurious.views.GameView.isGameOver;
 import static ch.ost.rj.mge.ostandfurious.views.GameView.meters;
 import static ch.ost.rj.mge.ostandfurious.views.GameView.screenRatioX;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Intent;
 import android.graphics.Point;
 import android.hardware.Sensor;
@@ -16,6 +14,8 @@ import android.os.Bundle;
 import android.view.Window;
 import android.view.WindowManager;
 import android.widget.Toast;
+
+import androidx.appcompat.app.AppCompatActivity;
 
 import ch.ost.rj.mge.ostandfurious.views.GameView;
 
@@ -36,14 +36,13 @@ public class gameActivity extends AppCompatActivity {
         getSupportActionBar().hide();
 
         Bundle extras = getIntent().getExtras();
-        if(extras == null) {
+        if (extras == null) {
             System.out.println("Extras are null!");
             Intent mainIntent = new Intent(this, MainActivity.class);
             startActivity(mainIntent);
-        }
-        else {
+        } else {
             playerName = extras.getString("playerName");
-            if(playerName == null) {
+            if (playerName == null) {
                 System.out.println("Name is null!");
                 Intent mainIntent = new Intent(this, MainActivity.class);
                 startActivity(mainIntent);
@@ -53,18 +52,17 @@ public class gameActivity extends AppCompatActivity {
         sm = (SensorManager) getSystemService(SENSOR_SERVICE);
         gyroscopeSensor = sm.getDefaultSensor(Sensor.TYPE_GYROSCOPE);
 
-        if(gyroscopeSensor == null) {
+        if (gyroscopeSensor == null) {
             Toast.makeText(this, "This device has no Gyroscope!", Toast.LENGTH_SHORT);
         }
 
         gyroScopeEventListener = new SensorEventListener() {
             @Override
             public void onSensorChanged(SensorEvent sensorEvent) {
-                if(sensorEvent.values[1] > 0.2f) {
-                    gameView.moveBike((int)(sensorEvent.values[1] * screenRatioX));
-                }
-                else if(sensorEvent.values[1] < -0.2f) {
-                    gameView.moveBike((int)(sensorEvent.values[1] * screenRatioX));
+                if (sensorEvent.values[1] > 0.2f) {
+                    gameView.moveBike((int) (sensorEvent.values[1] * screenRatioX));
+                } else if (sensorEvent.values[1] < -0.2f) {
+                    gameView.moveBike((int) (sensorEvent.values[1] * screenRatioX));
                 }
             }
 

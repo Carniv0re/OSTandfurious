@@ -25,6 +25,7 @@ public class PlayerAdapter extends RecyclerView.Adapter<PlayerViewHolder> {
         this.players = players;
         this.notifyDataSetChanged();
     }
+
     @NonNull
     @Override
     public PlayerViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {

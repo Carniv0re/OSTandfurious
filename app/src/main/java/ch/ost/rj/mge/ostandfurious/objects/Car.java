@@ -52,8 +52,8 @@ public class Car {
     }
 
     public boolean isCollidingWith(Bike bike) {
-        if(inMiddleOf(bike.bottomLeft) || inMiddleOf(bike.bottomRight)
-        || inMiddleOf(bike.topLeft) || inMiddleOf(bike.topRight)) {
+        if (inMiddleOf(bike.bottomLeft) || inMiddleOf(bike.bottomRight)
+                || inMiddleOf(bike.topLeft) || inMiddleOf(bike.topRight)) {
             return true;
         }
         return false;

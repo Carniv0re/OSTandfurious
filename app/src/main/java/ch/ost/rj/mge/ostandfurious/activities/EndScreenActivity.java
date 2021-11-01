@@ -30,20 +30,19 @@ public class EndScreenActivity extends AppCompatActivity {
         getWindow().setLayout((int) (width * 0.8), (int) (height * .8));
 
         Bundle extras = getIntent().getExtras();
-        if(extras == null) {
+        if (extras == null) {
             System.out.println("Extras are null!");
             Intent mainIntent = new Intent(this, MainActivity.class);
             startActivity(mainIntent);
-        }
-        else {
+        } else {
             playerName = extras.getString("playerName");
-            if(playerName == null) {
+            if (playerName == null) {
                 System.out.println("Name is null!");
                 Intent mainIntent = new Intent(this, MainActivity.class);
                 startActivity(mainIntent);
             }
             meters = extras.getString("meters");
-            if(meters == null) {
+            if (meters == null) {
                 System.out.println("Meters is null!");
                 Intent mainIntent = new Intent(this, MainActivity.class);
                 startActivity(mainIntent);

@@ -1,7 +1,6 @@
 package ch.ost.rj.mge.ostandfurious.model;
 
 import android.content.Context;
-import android.content.Intent;
 
 import androidx.room.Room;
 
@@ -41,12 +40,12 @@ public final class PlayerRepository {
         try {
             player.score = Integer.parseInt(score);
             System.out.println(player.score);
-        } catch(RuntimeException ex) {
+        } catch (RuntimeException ex) {
             System.out.println("Could not convert score to int!");
         }
 
-        for(Player p : getPlayers()) {
-            if(p.playerName.equals(player.playerName)) {
+        for (Player p : getPlayers()) {
+            if (p.playerName.equals(player.playerName)) {
                 database.playerDao().update(player);
                 return;
             }
