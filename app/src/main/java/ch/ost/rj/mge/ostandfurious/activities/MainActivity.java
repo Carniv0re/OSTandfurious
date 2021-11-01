@@ -10,6 +10,7 @@ import android.widget.Button;
 import android.widget.EditText;
 
 import ch.ost.rj.mge.ostandfurious.R;
+import ch.ost.rj.mge.ostandfurious.model.PlayerRepository;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -17,6 +18,7 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        PlayerRepository.initialize(this);
 
         /*//This is for testing purposes, to get to the game screen faster. Remove later
         Intent gameActivityIntent = new Intent(

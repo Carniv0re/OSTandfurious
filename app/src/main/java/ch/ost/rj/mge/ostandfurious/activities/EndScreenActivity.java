@@ -10,6 +10,7 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
 import ch.ost.rj.mge.ostandfurious.R;
+import ch.ost.rj.mge.ostandfurious.model.PlayerRepository;
 
 public class EndScreenActivity extends AppCompatActivity {
 
@@ -48,6 +49,8 @@ public class EndScreenActivity extends AppCompatActivity {
                 startActivity(mainIntent);
             }
         }
+
+        PlayerRepository.addPlayer(playerName, meters);
 
         TextView playerNameTextView = (TextView) findViewById(R.id.playerNameTextView);
         playerNameTextView.setText(playerName);
