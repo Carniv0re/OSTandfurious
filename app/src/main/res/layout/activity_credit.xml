@@ -8,14 +8,35 @@
 
     <TextView
         android:id="@+id/textViewLeaderboardTitle"
-        android:text="Credits"
+        android:text="Created By"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         android:layout_marginTop="30dp"
-        android:textSize="30sp" />
+        android:textSize="25sp" />
+
+    <TextView
+        android:id="@+id/diegoCreatedBy"
+        android:text="Diego Kaiser, Lead Developer"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/textViewLeaderboardTitle"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        android:layout_marginTop="30dp"
+        android:textSize="15sp" />
+
+    <TextView
+        android:id="@+id/lucasCreatedBy"
+        android:text="Lucas von Niederhäusern, Lead Developer"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/diegoCreatedBy"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        android:textSize="15sp" />
 
     <Button
         android:id="@+id/buttonBack"
