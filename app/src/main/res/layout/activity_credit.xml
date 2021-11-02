@@ -19,7 +19,7 @@
 
     <TextView
         android:id="@+id/diegoCreatedBy"
-        android:text="Diego Kaiser, Lead Developer"
+        android:text="@string/diego_kaiser_lead_developer"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:layout_constraintTop_toBottomOf="@id/textViewLeaderboardTitle"
@@ -30,7 +30,7 @@
 
     <TextView
         android:id="@+id/lucasCreatedBy"
-        android:text="Lucas von Niederhäusern, Lead Developer"
+        android:text="@string/lucas_von_niederh_usern_lead_developer"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:layout_constraintTop_toBottomOf="@id/diegoCreatedBy"

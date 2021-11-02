@@ -12,5 +12,9 @@
     <string name="back_to_main_menu">もどる</string>
     <string name="back">もどる</string>
     <string name="created_by">作成者</string>
-    <string name="new_highscore">新記録!</string>
+    <string name="new_highscore">新記録！</string>
+    <string name="deathScreenName">名前：</string>
+    <string name="deathScreenDistance">距離：</string>
+    <string name="diego_kaiser_lead_developer">カイザーディエゴ、リード開発者</string>
+    <string name="lucas_von_niederh_usern_lead_developer">加藤光樹、リード開発者</string>
 </resources>
