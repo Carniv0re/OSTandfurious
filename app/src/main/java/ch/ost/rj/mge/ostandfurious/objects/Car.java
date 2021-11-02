@@ -18,8 +18,8 @@ public class Car {
         width = car.getWidth();
         height = car.getHeight();
 
-        width /= 2;
-        height /= 2;
+        width /= 3;
+        height /= 3;
         //width = (int) (width * screenRatioX);
         //height = (int) (height * screenRatioY);
 

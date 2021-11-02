@@ -133,19 +133,9 @@ public class GameView extends SurfaceView implements Runnable {
 
             canvas.drawBitmap(bike.getBike(), bike.getTopLeft().getX(), bike.getTopLeft().getY(), paint);
 
-            /*canvas.drawCircle(bike.bottomLeft.getX(), bike.bottomLeft.getY(), 5, paint);
-            canvas.drawCircle(bike.bottomRight.getX(), bike.bottomRight.getY(), 5, paint);
-            canvas.drawCircle(bike.topLeft.getX(), bike.topLeft.getY(), 10, paint);
-            canvas.drawCircle(bike.topRight.getX(), bike.topRight.getY(), 10, paint);*/
-
             isDrawingCars = true;
             for (Car car : cars) {
                 canvas.drawBitmap(car.getCar(), car.getTopLeft().getX(), car.getTopLeft().getY(), paint);
-
-                /*canvas.drawCircle(car.bottomLeft.getX(), car.bottomLeft.getY(), 10, paint);
-                canvas.drawCircle(car.bottomRight.getX(), car.bottomRight.getY(), 10, paint);
-                canvas.drawCircle(car.topLeft.getX(), car.topLeft.getY(), 5, paint);
-                canvas.drawCircle(car.topRight.getX(), car.topRight.getY(), 5, paint);*/
 
                 if (car.isCollidingWith(bike)) {
                     isGameOver = true;
