@@ -26,7 +26,7 @@
         android:textColor="#D80808"
         android:textSize="24sp"
         android:textStyle="bold"
-        android:layout_marginStart="105dp"
+        android:layout_marginStart="45dp"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintTop_toBottomOf="@id/youDiedTextView"
         app:layout_constraintBottom_toTopOf="@id/playAgainButton"/>
@@ -52,7 +52,7 @@
         android:textSize="24sp"
         android:textStyle="bold"
         app:layout_constraintTop_toBottomOf="@id/nameTextView"
-        app:layout_constraintRight_toRightOf="@id/nameTextView"/>
+        app:layout_constraintLeft_toLeftOf="@id/nameTextView"/>
 
     <TextView
         android:id="@+id/metersTextView"
