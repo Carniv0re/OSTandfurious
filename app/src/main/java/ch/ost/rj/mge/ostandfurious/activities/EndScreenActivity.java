@@ -35,18 +35,21 @@ public class EndScreenActivity extends AppCompatActivity {
         if (extras == null) {
             System.out.println("Extras are null!");
             Intent mainIntent = new Intent(this, MainActivity.class);
+            mainIntent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
             startActivity(mainIntent);
         } else {
             playerName = extras.getString("playerName");
             if (playerName == null) {
                 System.out.println("Name is null!");
                 Intent mainIntent = new Intent(this, MainActivity.class);
+                mainIntent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                 startActivity(mainIntent);
             }
             meters = extras.getString("meters");
             if (meters == null) {
                 System.out.println("Meters is null!");
                 Intent mainIntent = new Intent(this, MainActivity.class);
+                mainIntent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                 startActivity(mainIntent);
             }
         }

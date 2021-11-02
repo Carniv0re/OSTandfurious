@@ -8,7 +8,7 @@
 
     <TextView
         android:id="@+id/textViewLeaderboardTitle"
-        android:text="Created By"
+        android:text="@string/created_by"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:layout_constraintTop_toTopOf="parent"
@@ -40,7 +40,7 @@
 
     <Button
         android:id="@+id/buttonBack"
-        android:text="Back"
+        android:text="@string/back"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:layout_constraintBottom_toBottomOf="parent"

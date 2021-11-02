@@ -1,6 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name">OSTandfurious</string>
+    <string name="your_name">Dein Name</string>
     <string name="play_game">Spielen</string>
+    <string name="leaderboard">Rangliste</string>
+    <string name="credits">Credits</string>
+    <string name="you_died">Du bist tot</string>
+    <string name="name">Name</string>
+    <string name="distance">Distanz</string>
+    <string name="play_again">Nochmal spielen</string>
+    <string name="back_to_main_menu">Zurück zum Menü</string>
+    <string name="back">Zurück</string>
+    <string name="created_by">Erstellt von</string>
 
 </resources>

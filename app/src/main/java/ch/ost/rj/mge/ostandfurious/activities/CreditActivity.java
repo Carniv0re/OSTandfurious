@@ -14,6 +14,7 @@ public class CreditActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_credit);
+        getSupportActionBar().hide();
 
         Button backBtn = this.findViewById(R.id.buttonBack);
         backBtn.setOnClickListener(view -> {
@@ -21,6 +22,7 @@ public class CreditActivity extends AppCompatActivity {
                     this,
                     MainActivity.class
             );
+            mainActivityIntent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
             startActivity(mainActivityIntent);
         });
     }

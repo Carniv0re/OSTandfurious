@@ -27,7 +27,7 @@
         app:layout_constraintBottom_toBottomOf="parent"
         android:layout_marginStart="50dp"
         android:layout_marginEnd="50dp"
-        android:hint="Your Name"
+        android:hint="@string/your_name"
         android:gravity="center"
         android:imeOptions="actionDone" />
 
@@ -43,7 +43,7 @@
 
     <Button
         android:id="@+id/buttonCredits"
-        android:text="Credits"
+        android:text="@string/credits"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:layout_constraintLeft_toLeftOf="parent"
@@ -52,7 +52,7 @@
 
     <Button
         android:id="@+id/buttonLeaderboard"
-        android:text="Leaderboard"
+        android:text="@string/leaderboard"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:layout_constraintLeft_toLeftOf="parent"

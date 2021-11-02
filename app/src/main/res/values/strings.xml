@@ -1,4 +1,15 @@
 <resources>
     <string name="app_name">OSTandfurious</string>
+    <string name="your_name">Dein Name</string>
     <string name="play_game">Play game</string>
+    <string name="leaderboard">Leaderboard</string>
+    <string name="credits">Credits</string>
+    <string name="you_died">You Died</string>
+    <string name="name">Name</string>
+    <string name="distance">Distance</string>
+    <string name="play_again">Play again</string>
+    <string name="back_to_main_menu">Back to main menu</string>
+    <string name="back">Back</string>
+    <string name="created_by">Created By</string>
+
 </resources>

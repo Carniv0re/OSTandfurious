@@ -9,7 +9,7 @@
         android:id="@+id/youDiedTextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="YOU DIED"
+        android:text="@string/you_died"
         android:textColor="#D80808"
         android:textSize="48sp"
         android:textStyle="bold"

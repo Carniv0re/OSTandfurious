@@ -25,6 +25,7 @@ public class LeaderboardActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_leaderboard);
+        getSupportActionBar().hide();
 
         Button backBtn = this.findViewById(R.id.buttonBack);
         backBtn.setOnClickListener(view -> {
@@ -32,6 +33,7 @@ public class LeaderboardActivity extends AppCompatActivity {
                     this,
                     MainActivity.class
             );
+            mainActivityIntent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
             startActivity(mainActivityIntent);
         });
 

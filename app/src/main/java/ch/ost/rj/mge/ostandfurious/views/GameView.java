@@ -106,7 +106,7 @@ public class GameView extends SurfaceView implements Runnable {
             laps++;
         }
         if (laps % 2 == 0 && laps > 0 && speedIncrease) {
-            this.backGroundSpeed += 0.1;
+            this.backGroundSpeed += 0.1 * laps;
             speedIncrease = false;
             System.out.println("Speed: " + this.backGroundSpeed);
         } else if (laps % 2 == 1) {
