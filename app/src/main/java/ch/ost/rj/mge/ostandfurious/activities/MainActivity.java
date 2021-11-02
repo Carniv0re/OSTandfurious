@@ -86,7 +86,13 @@ public class MainActivity extends AppCompatActivity {
 
                 @Override
                 public void afterTextChanged(Editable editable) {
-                    playGameBtn.setEnabled(true);
+                    if(nameEditText.getText().toString().length() < 1 || nameEditText.getText().toString().length() > 10) {
+                        playGameBtn.setEnabled(false);
+                        nameEditText.setError("Name must be between 1-10 characters");
+                    } else {
+                        nameEditText.setError(null);
+                        playGameBtn.setEnabled(true);
+                    }
                 }
             });
         } else {
