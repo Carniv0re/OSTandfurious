@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">OSTandfurious</string>
+    <string name="your_name">名前</string>
+    <string name="play_game">プレー</string>
+    <string name="leaderboard">ランキング</string>
+    <string name="credits">クレジット</string>
+    <string name="you_died">死</string>
+    <string name="name">名前</string>
+    <string name="distance">距離</string>
+    <string name="play_again">Play Again</string>
+    <string name="back_to_main_menu">もどる</string>
+    <string name="back">もどる</string>
+    <string name="created_by">作成者</string>
+    <string name="new_highscore">新記録!</string>
+</resources>
