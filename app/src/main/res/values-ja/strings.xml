@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">OSTandfurious</string>
+    <string name="your_name">名前</string>
+    <string name="play_game">プレー</string>
+    <string name="leaderboard">ランキング</string>
+    <string name="credits">制作者</string>
+    <string name="you_died">死</string>
+    <string name="name">名前</string>
+    <string name="distance">距離</string>
+    <string name="play_again">Play Again</string>
+    <string name="back_to_main_menu">もどる</string>
+    <string name="back">もどる</string>
+    <string name="created_by">制作者</string>
+    <string name="new_highscore">新記録！</string>
+    <string name="deathScreenName">名前：</string>
+    <string name="deathScreenDistance">距離：</string>
+    <string name="diego_kaiser_lead_developer">カイザーディエゴ、リード開発者</string>
+    <string name="lucas_von_niederh_usern_lead_developer">加藤光樹、リード開発者</string>
+</resources>
