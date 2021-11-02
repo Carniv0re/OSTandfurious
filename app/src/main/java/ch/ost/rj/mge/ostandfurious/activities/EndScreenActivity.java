@@ -56,11 +56,16 @@ public class EndScreenActivity extends AppCompatActivity {
 
         if (PlayerRepository.addPlayer(playerName, meters)) {
             Context context = this;
-            String text = "You cracked your Highscore!";
+            String text = getString(R.string.new_highscore);
             int duration = Toast.LENGTH_SHORT;
             Toast toast = Toast.makeText(context, text, duration);
             toast.show();
         }
+
+        TextView nameTextView = (TextView) findViewById(R.id.nameTextView);
+        nameTextView.setText(getString(R.string.name) + ": ");
+        TextView distanceTextView = (TextView) findViewById(R.id.distanceTextView);
+        distanceTextView.setText(getString(R.string.distance) + ": ");
 
         TextView playerNameTextView = (TextView) findViewById(R.id.playerNameTextView);
         playerNameTextView.setText(playerName);

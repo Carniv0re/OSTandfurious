@@ -12,5 +12,6 @@
     <string name="back_to_main_menu">Zurück zum Menü</string>
     <string name="back">Zurück</string>
     <string name="created_by">Erstellt von</string>
+    <string name="new_highscore">Du hast deinen Rekord geschlagen!</string>
 
 </resources>
