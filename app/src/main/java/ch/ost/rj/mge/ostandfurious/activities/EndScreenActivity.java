@@ -65,9 +65,9 @@ public class EndScreenActivity extends AppCompatActivity {
         }
 
         TextView nameTextView = (TextView) findViewById(R.id.nameTextView);
-        nameTextView.setText(getString(R.string.deathScreenName));
+        nameTextView.setText(getString(R.string.name));
         TextView distanceTextView = (TextView) findViewById(R.id.distanceTextView);
-        distanceTextView.setText(R.string.deathScreenDistance);
+        distanceTextView.setText(R.string.distance);
 
         TextView playerNameTextView = (TextView) findViewById(R.id.playerNameTextView);
         playerNameTextView.setText(playerName);

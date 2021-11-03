@@ -13,8 +13,6 @@
     <string name="back">Zurück</string>
     <string name="created_by">Erstellt von</string>
     <string name="new_highscore">Neuer Rekord!</string>
-    <string name="deathScreenName">Name:</string>
-    <string name="deathScreenDistance">Distanz:</string>
     <string name="diego_kaiser_lead_developer">Diego Kaiser, Leitender Entwickler</string>
     <string name="lucas_von_niederh_usern_lead_developer">Lucas von Niederhäusern, Leitender Entwickler</string>
     <string name="error_message">Name muss zwischen 1–10 Zeichen lang sein</string>

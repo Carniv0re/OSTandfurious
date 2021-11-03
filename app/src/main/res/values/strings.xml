@@ -12,8 +12,6 @@
     <string name="back">Back</string>
     <string name="created_by">Created By</string>
     <string name="new_highscore">New Highscore!</string>
-    <string name="deathScreenName">Name:</string>
-    <string name="deathScreenDistance">Distance:</string>
     <string name="ost_and_furious" translatable="false">OST and Furious</string>
     <string name="diego_kaiser_lead_developer">Diego Kaiser, Lead Developer</string>
     <string name="lucas_von_niederh_usern_lead_developer">Lucas von Niederhäusern, Lead Developer</string>
