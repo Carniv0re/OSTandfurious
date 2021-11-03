@@ -13,6 +13,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import ch.ost.rj.mge.ostandfurious.R;
 import ch.ost.rj.mge.ostandfurious.model.PlayerRepository;
+import ch.ost.rj.mge.ostandfurious.service.NotificationService;
 
 public class EndScreenActivity extends AppCompatActivity {
 
@@ -60,12 +61,13 @@ public class EndScreenActivity extends AppCompatActivity {
             int duration = Toast.LENGTH_SHORT;
             Toast toast = Toast.makeText(context, text, duration);
             toast.show();
+            NotificationService.createNotification(this, R.drawable.car, getString(R.string.new_highscore), playerName + ": " + meters);
         }
 
         TextView nameTextView = (TextView) findViewById(R.id.nameTextView);
-        nameTextView.setText(getString(R.string.name) + ": ");
+        nameTextView.setText(getString(R.string.deathScreenName));
         TextView distanceTextView = (TextView) findViewById(R.id.distanceTextView);
-        distanceTextView.setText(getString(R.string.distance) + ": ");
+        distanceTextView.setText(R.string.deathScreenDistance);
 
         TextView playerNameTextView = (TextView) findViewById(R.id.playerNameTextView);
         playerNameTextView.setText(playerName);

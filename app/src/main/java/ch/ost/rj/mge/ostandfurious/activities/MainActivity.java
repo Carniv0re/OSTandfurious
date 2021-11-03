@@ -16,6 +16,7 @@ import java.util.Locale;
 
 import ch.ost.rj.mge.ostandfurious.R;
 import ch.ost.rj.mge.ostandfurious.model.PlayerRepository;
+import ch.ost.rj.mge.ostandfurious.service.NotificationService;
 import ch.ost.rj.mge.ostandfurious.util.ContextUtils;
 
 public class MainActivity extends AppCompatActivity {
@@ -29,6 +30,7 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         PlayerRepository.initialize(this);
+        NotificationService.initialize(this);
         getSupportActionBar().hide();
 
         /*//This is for testing purposes, to get to the game screen faster. Remove later

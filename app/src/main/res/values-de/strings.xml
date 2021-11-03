@@ -12,7 +12,7 @@
     <string name="back_to_main_menu">Zurück zum Menü</string>
     <string name="back">Zurück</string>
     <string name="created_by">Erstellt von</string>
-    <string name="new_highscore">Du hast deinen Rekord geschlagen!</string>
+    <string name="new_highscore">Neuer Rekord!</string>
     <string name="deathScreenName">Name:</string>
     <string name="deathScreenDistance">Distanz:</string>
     <string name="diego_kaiser_lead_developer">Diego Kaiser, Leitender Entwickler</string>

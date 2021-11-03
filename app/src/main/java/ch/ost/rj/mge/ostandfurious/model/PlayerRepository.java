@@ -56,6 +56,6 @@ public final class PlayerRepository {
         }
 
         addPlayer(player);
-        return false;
+        return true;
     }
 }
