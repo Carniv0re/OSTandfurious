@@ -17,4 +17,5 @@
     <string name="deathScreenDistance">距離：</string>
     <string name="diego_kaiser_lead_developer">カイザーディエゴ、リード開発者</string>
     <string name="lucas_von_niederh_usern_lead_developer">加藤光樹、リード開発者</string>
+    <string name="error_message">名前は1〜10文字の長さである必要があります</string>
 </resources>
