@@ -29,7 +29,7 @@
         android:layout_marginStart="45dp"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintTop_toBottomOf="@id/youDiedTextView"
-        app:layout_constraintBottom_toTopOf="@id/playAgainButton"/>
+        app:layout_constraintBottom_toTopOf="@id/playAgainButton" />
 
     <TextView
         android:id="@+id/playerNameTextView"
@@ -40,7 +40,7 @@
         android:textStyle="bold"
         app:layout_constraintTop_toBottomOf="@id/youDiedTextView"
         app:layout_constraintLeft_toLeftOf="@id/metersTextView"
-        app:layout_constraintBottom_toTopOf="@id/playAgainButton"/>
+        app:layout_constraintBottom_toTopOf="@id/playAgainButton" />
 
     <TextView
         android:id="@+id/distanceTextView"
@@ -51,7 +51,7 @@
         android:textSize="24sp"
         android:textStyle="bold"
         app:layout_constraintTop_toBottomOf="@id/nameTextView"
-        app:layout_constraintLeft_toLeftOf="@id/nameTextView"/>
+        app:layout_constraintLeft_toLeftOf="@id/nameTextView" />
 
     <TextView
         android:id="@+id/metersTextView"

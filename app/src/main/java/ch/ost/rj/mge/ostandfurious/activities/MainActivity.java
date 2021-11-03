@@ -1,7 +1,5 @@
 package ch.ost.rj.mge.ostandfurious.activities;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Context;
 import android.content.ContextWrapper;
 import android.content.Intent;
@@ -11,13 +9,13 @@ import android.text.Editable;
 import android.text.TextWatcher;
 import android.widget.Button;
 import android.widget.EditText;
-import androidx.room.Room;
 
-import ch.ost.rj.mge.ostandfurious.R;
-import ch.ost.rj.mge.ostandfurious.model.PlayerRepository;
+import androidx.appcompat.app.AppCompatActivity;
+
 import java.util.Locale;
 
 import ch.ost.rj.mge.ostandfurious.R;
+import ch.ost.rj.mge.ostandfurious.model.PlayerRepository;
 import ch.ost.rj.mge.ostandfurious.util.ContextUtils;
 
 public class MainActivity extends AppCompatActivity {
@@ -86,7 +84,7 @@ public class MainActivity extends AppCompatActivity {
 
                 @Override
                 public void afterTextChanged(Editable editable) {
-                    if(nameEditText.getText().toString().length() < 1 || nameEditText.getText().toString().length() > 10) {
+                    if (nameEditText.getText().toString().length() < 1 || nameEditText.getText().toString().length() > 10) {
                         playGameBtn.setEnabled(false);
                         nameEditText.setError(getString(R.string.error_message));
                     } else {
