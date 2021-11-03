@@ -67,9 +67,9 @@ public class GameActivity extends AppCompatActivity {
             @Override
             public void onSensorChanged(SensorEvent sensorEvent) {
                 if (sensorEvent.values[1] > 0.2f) {
-                    gameView.moveBike((int) (sensorEvent.values[1] * screenRatioX));
+                    gameView.moveBike((int) (sensorEvent.values[1] * screenRatioX * 2));
                 } else if (sensorEvent.values[1] < -0.2f) {
-                    gameView.moveBike((int) (sensorEvent.values[1] * screenRatioX));
+                    gameView.moveBike((int) (sensorEvent.values[1] * screenRatioX * 2));
                 }
             }
 
