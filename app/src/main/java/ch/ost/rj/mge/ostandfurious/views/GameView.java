@@ -7,12 +7,14 @@ import android.graphics.Color;
 import android.graphics.Paint;
 import android.graphics.Rect;
 import android.graphics.Typeface;
+import android.media.MediaPlayer;
 import android.view.SurfaceView;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.ThreadLocalRandom;
 
+import ch.ost.rj.mge.ostandfurious.R;
 import ch.ost.rj.mge.ostandfurious.activities.EndScreenActivity;
 import ch.ost.rj.mge.ostandfurious.objects.Bike;
 import ch.ost.rj.mge.ostandfurious.objects.Car;
@@ -139,6 +141,9 @@ public class GameView extends SurfaceView implements Runnable {
 
                 if (car.isCollidingWith(bike)) {
                     isGameOver = true;
+                    MediaPlayer mpCrash = MediaPlayer.create(context, R.raw.crash);
+                    mpCrash.start();
+
                 }
             }
             isDrawingCars = false;

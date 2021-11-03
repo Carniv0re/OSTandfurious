@@ -10,6 +10,7 @@ import android.hardware.Sensor;
 import android.hardware.SensorEvent;
 import android.hardware.SensorEventListener;
 import android.hardware.SensorManager;
+import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.view.Window;
 import android.view.WindowManager;
@@ -18,6 +19,7 @@ import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 
 import ch.ost.rj.mge.ostandfurious.views.GameView;
+import ch.ost.rj.mge.ostandfurious.R;
 
 public class GameActivity extends AppCompatActivity {
 
@@ -26,6 +28,7 @@ public class GameActivity extends AppCompatActivity {
     private SensorManager sm;
     private Sensor gyroscopeSensor;
     private SensorEventListener gyroScopeEventListener;
+    private MediaPlayer mpEngine;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -48,6 +51,10 @@ public class GameActivity extends AppCompatActivity {
                 startActivity(mainIntent);
             }
         }
+
+        mpEngine  = MediaPlayer.create(this, R.raw.engine);
+        mpEngine.setLooping(true);
+        mpEngine.start();
 
         sm = (SensorManager) getSystemService(SENSOR_SERVICE);
         gyroscopeSensor = sm.getDefaultSensor(Sensor.TYPE_GYROSCOPE);
@@ -79,22 +86,6 @@ public class GameActivity extends AppCompatActivity {
         meters = 0;
         gameView = new GameView(this, point.x, point.y, playerName);
         setContentView(gameView);
-
-        /*new Timer().scheduleAtFixedRate(new TimerTask() {
-            @Override
-            public void run() {
-                //TODO: better ConcurrentModificationException handling
-                if(!isDrawingCars) {
-                    if(isPlaying) {
-                        try {
-                            gameView.spawnCar();
-                        } catch (ConcurrentModificationException e) {
-                            e.printStackTrace();
-                        }
-                    }
-                }
-            }
-        }, 0, 1000);*/
 
 
         /*TextView countDownView = this.findViewById(R.id.countDownView);
@@ -129,24 +120,15 @@ public class GameActivity extends AppCompatActivity {
     protected void onPause() {
         super.onPause();
         sm.unregisterListener(gyroScopeEventListener);
+        mpEngine.stop();
         System.out.println("Paused");
-        /*if(isGameOver) {
-            Intent endScreenActivity = new Intent(
-                    this,
-                    EndScreenActivity.class
-            );
-            endScreenActivity.putExtra("playerName", playerName);
-            endScreenActivity.putExtra("meters", Integer.toString(meters));
-            startActivity(endScreenActivity);
-        }*/
-
-        //gameView.pause();
     }
 
     @Override
     protected void onResume() {
         super.onResume();
         sm.registerListener(gyroScopeEventListener, gyroscopeSensor, SensorManager.SENSOR_DELAY_FASTEST);
+        mpEngine.start();
         gameView.resume();
     }
 }
