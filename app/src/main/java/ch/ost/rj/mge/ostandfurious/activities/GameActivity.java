@@ -53,7 +53,7 @@ public class GameActivity extends AppCompatActivity {
         gyroscopeSensor = sm.getDefaultSensor(Sensor.TYPE_GYROSCOPE);
 
         if (gyroscopeSensor == null) {
-            Toast.makeText(this, "This device has no Gyroscope!", Toast.LENGTH_SHORT);
+            Toast.makeText(this, "This device has no Gyroscope!", Toast.LENGTH_SHORT).show();
         }
 
         gyroScopeEventListener = new SensorEventListener() {
