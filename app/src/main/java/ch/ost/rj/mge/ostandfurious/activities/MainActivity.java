@@ -22,7 +22,7 @@ import ch.ost.rj.mge.ostandfurious.util.ContextUtils;
 public class MainActivity extends AppCompatActivity {
 
     private String locale;
-    private String[] locales = {"en", "de", "ja"};
+    private final String[] locales = {"en", "de", "ja"};
     private int currentLocaleIndex = 0;
 
     @Override
