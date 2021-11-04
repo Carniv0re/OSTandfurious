@@ -30,7 +30,7 @@ Auf dem Leaderboard siehst du, wie gut (oder schlecht) du warst mit deinem Versu
 
 - Verwendung von Jetpack-Komponenten (Room, ConstraintLayout, RecyclerView) 3 Punkte
 
-- Verwendung von Notifications 2 Punkte
+- Verwendung von Notifications/Widgets 2 Punkte
 
 - Verwendung von Aktoren oder Sensoren 1 Punkte
 
