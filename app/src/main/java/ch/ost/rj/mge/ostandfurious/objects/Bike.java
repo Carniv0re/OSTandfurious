@@ -23,13 +23,6 @@ public class Bike {
         width /= 4;
         height /= 4;
 
-
-        //width *= screenRatioX;
-        //height *= screenRatioY;
-
-        /*System.out.println("Width:" + width);
-        System.out.println("Height: " + height);*/
-
         bike = Bitmap.createScaledBitmap(bike, width, height, false);
 
         if (bike == null) {

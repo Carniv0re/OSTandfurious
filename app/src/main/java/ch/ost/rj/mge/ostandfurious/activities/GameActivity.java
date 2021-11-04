@@ -86,34 +86,6 @@ public class GameActivity extends AppCompatActivity {
         meters = 0;
         gameView = new GameView(this, point.x, point.y, playerName);
         setContentView(gameView);
-
-
-        /*TextView countDownView = this.findViewById(R.id.countDownView);
-        countDownView.setText("Ready?");
-        countDownView.setVisibility(View.VISIBLE);
-
-        new CountDownTimer(5000, 1000) {
-            int count = 4;
-            public void onTick(long millisUntilFinished) {
-                if(millisUntilFinished > 4001) {
-                    return;
-                }
-                if(count > 1){
-                    countDownView.setText(Integer.toString(count - 1));
-                    count--;
-                }
-                else {
-                    countDownView.setText("GO!");
-
-                }
-            }
-
-            public void onFinish() {
-                countDownView.setEnabled(false);
-                countDownView.setVisibility(View.GONE);
-            }
-
-        }.start();*/
     }
 
     @Override

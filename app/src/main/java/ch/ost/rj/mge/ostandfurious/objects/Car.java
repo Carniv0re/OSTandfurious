@@ -20,8 +20,6 @@ public class Car {
 
         width /= 3;
         height /= 3;
-        //width = (int) (width * screenRatioX);
-        //height = (int) (height * screenRatioY);
 
         car = Bitmap.createScaledBitmap(car, width, height, false);
 

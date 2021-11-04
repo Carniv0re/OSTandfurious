@@ -195,34 +195,19 @@ public class GameView extends SurfaceView implements Runnable {
         if (this.bike.getBottomLeft().getX() - amount < 0) {
             if (amount > 0) {
                 this.bike.move(amount);
-                /*this.bike.getBottomLeft().moveX(amount);
-                this.bike.getBottomRight().moveX(amount);
-                this.bike.getTopLeft().moveX(amount);
-                this.bike.getTopRight().moveX(amount);*/
             }
         } else if (this.bike.getBottomRight().getX() + amount > screenX) {
             if (amount < 0) {
                 this.bike.move(amount);
-                /*this.bike.getBottomLeft().moveX(amount);
-                this.bike.getBottomRight().moveX(amount);
-                this.bike.getTopLeft().moveX(amount);
-                this.bike.getTopRight().moveX(amount);*/
             }
         } else {
             this.bike.move(amount);
-            /*this.bike.getBottomLeft().moveX(amount);
-            this.bike.getBottomRight().moveX(amount);
-            this.bike.getTopLeft().moveX(amount);
-            this.bike.getTopRight().moveX(amount);*/
         }
     }
 
     public void spawnCar() {
         int possibleCoords[] = {0, (int) (screenX * 0.25), (int) (screenX / 2), (int) (screenX * 0.75)};
         Car newCar = new Car(screenX, possibleCoords[ThreadLocalRandom.current().nextInt(0, 4)], getResources());
-        //System.out.println("New car spawned with width: " + newCar.width + " and height: " + newCar.height);
-        //if(!isDrawingCars) {
         cars.add(newCar);
-        //}
     }
 }

@@ -22,6 +22,13 @@ public class CreditActivity extends AppCompatActivity {
                     this,
                     MainActivity.class
             );
+            Bundle extras = getIntent().getExtras();
+            if (extras != null) {
+                String playerName = extras.getString("playerName");
+                if (playerName != null) {
+                    mainActivityIntent.putExtra("playerName", playerName);
+                }
+            }
             mainActivityIntent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
             startActivity(mainActivityIntent);
         });

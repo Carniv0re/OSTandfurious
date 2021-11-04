@@ -33,23 +33,19 @@ public class MainActivity extends AppCompatActivity {
         NotificationService.initialize(this);
         getSupportActionBar().hide();
 
-        /*//This is for testing purposes, to get to the game screen faster. Remove later
-        Intent gameActivityIntent = new Intent(
-                this,
-                gameActivity.class
-        );
-        startActivity(gameActivityIntent);
-        //Test end*/
-
         Button playGameBtn = this.findViewById(R.id.buttonPlayGame);
         playGameBtn.setEnabled(false);
 
+        EditText nameEditText = this.findViewById(R.id.editTextYourName);
         Button leaderboardBtn = this.findViewById(R.id.buttonLeaderboard);
         leaderboardBtn.setOnClickListener(v -> {
             Intent leaderboardActivityIntent = new Intent(
                     this,
                     LeaderboardActivity.class
             );
+            if(!nameEditText.getText().equals("")) {
+                leaderboardActivityIntent.putExtra("playerName", nameEditText.getText().toString());
+            }
             leaderboardActivityIntent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
             startActivity(leaderboardActivityIntent);
         });
@@ -60,11 +56,14 @@ public class MainActivity extends AppCompatActivity {
                     this,
                     CreditActivity.class
             );
+            if(!nameEditText.getText().equals("")) {
+                creditsActivityIntent.putExtra("playerName", nameEditText.getText().toString());
+            }
             creditsActivityIntent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
             startActivity(creditsActivityIntent);
         });
 
-        EditText nameEditText = this.findViewById(R.id.editTextYourName);
+
         Bundle extras = getIntent().getExtras();
         if (extras != null) {
             String playerName = extras.getString("playerName");
@@ -123,6 +122,9 @@ public class MainActivity extends AppCompatActivity {
                     this,
                     MainActivity.class
             );
+            if(!nameEditText.getText().equals("")) {
+                mainMenuActivity.putExtra("playerName", nameEditText.getText().toString());
+            }
             mainMenuActivity.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
             startActivity(mainMenuActivity);
         });
